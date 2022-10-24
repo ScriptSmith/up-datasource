@@ -1,0 +1,58 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "datasource",
+  "name": "Up Bank",
+  "id": "scriptsmith-up-datasource",
+  "metrics": true,
+  "info": {
+    "description": "Up Bank API data source",
+    "author": {
+      "name": "Adam Smith",
+      "url": "https://github.com/scriptsmith"
+    },
+    "keywords": [
+      "up",
+      "bank",
+      "api"
+    ],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://github.com/scriptsmith/up-datasource"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/scriptsmith/up-datasource/blob/master/LICENSE"
+      }
+    ],
+    "screenshots": [
+      {
+        "name": "Sample dashboard",
+        "path": "screenshots/dashboard.png"
+      }],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "routes": [
+    {
+      "path": "up",
+      "url": "https://api.up.com.au",
+      "headers": [
+        {
+          "name": "Authorization",
+          "content": "Bearer {{ .SecureJsonData.accessToken }}"
+        }
+      ]
+
+    }
+  ],
+  "includes": [{ "type": "dashboard", "name": "Sample (DevOps)", "path": "dashboards/dashboard.json" }],
+  "dependencies": {
+    "grafanaDependency": ">=9.0.0",
+    "plugins": []
+  }
+}

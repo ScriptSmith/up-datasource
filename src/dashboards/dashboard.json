@@ -1,0 +1,1466 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_UP_BANK",
+      "label": "Up Bank",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "scriptsmith-up-datasource",
+      "pluginName": "Up Bank"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "barchart",
+      "name": "Bar chart",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.2.0"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "scriptsmith-up-datasource",
+      "name": "Up Bank",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 18,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "title": "Account Balance",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AccountId": true,
+              "AccountType": true,
+              "AmountValue": true,
+              "CashbackAmountValue": true,
+              "CashbackDescription": true,
+              "CategoryId": true,
+              "CategoryType": true,
+              "Description": true,
+              "ForeignAmountCode": true,
+              "ForeignAmountValue": true,
+              "HoldInfoAmountValue": true,
+              "HoldInfoForeignAmountCode": true,
+              "HoldInfoForeignAmountValue": true,
+              "IsCategorizable": true,
+              "Message": true,
+              "ParentCategoryId": true,
+              "ParentCategoryType": true,
+              "RawText": true,
+              "RoundUpAmountValue": true,
+              "RoundUpBoostPortionValue": true,
+              "SettledAt": true,
+              "Status": true,
+              "TransferAccountId": true,
+              "TransferAccountType": true
+            },
+            "indexByName": {
+              "AccountBalance": 4,
+              "AccountId": 2,
+              "AccountName": 3,
+              "AccountType": 20,
+              "AmountValue": 1,
+              "CashbackAmountValue": 16,
+              "CashbackDescription": 15,
+              "CategoryId": 24,
+              "CategoryType": 23,
+              "CreatedAt": 0,
+              "Description": 7,
+              "ForeignAmountCode": 17,
+              "ForeignAmountValue": 18,
+              "HoldInfoAmountValue": 10,
+              "HoldInfoForeignAmountCode": 11,
+              "HoldInfoForeignAmountValue": 12,
+              "IsCategorizable": 9,
+              "Message": 8,
+              "ParentCategoryId": 26,
+              "ParentCategoryType": 25,
+              "RawText": 6,
+              "RoundUpAmountValue": 13,
+              "RoundUpBoostPortionValue": 14,
+              "SettledAt": 19,
+              "Status": 5,
+              "TransferAccountId": 22,
+              "TransferAccountType": 21
+            },
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "prepareTimeSeries",
+          "options": {
+            "format": "many"
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 14,
+      "title": "Income",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 0,
+        "y": 13
+      },
+      "id": 5,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/.*/",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "title": "Income (by source)",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AccountBalance": true,
+              "AccountId": true,
+              "AccountName": true,
+              "AccountType": true,
+              "CashbackAmountValue": true,
+              "CashbackDescription": true,
+              "CategoryId": true,
+              "CategoryType": true,
+              "CreatedAt": true,
+              "Description": false,
+              "ForeignAmountCode": true,
+              "ForeignAmountValue": true,
+              "HoldInfoAmountValue": true,
+              "HoldInfoForeignAmountCode": true,
+              "HoldInfoForeignAmountValue": true,
+              "IsCategorizable": true,
+              "Message": true,
+              "ParentCategoryId": true,
+              "ParentCategoryType": true,
+              "RawText": true,
+              "RoundUpAmountValue": true,
+              "RoundUpBoostPortionValue": true,
+              "SettledAt": true,
+              "Status": true,
+              "TransferAccountId": false,
+              "TransferAccountType": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "greater",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "AmountValue"
+              },
+              {
+                "config": {
+                  "id": "isNull",
+                  "options": {}
+                },
+                "fieldName": "TransferAccountId"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AmountValue": false,
+              "CreatedAt": false,
+              "TransferAccountId": true
+            },
+            "indexByName": {
+              "Amount": 2,
+              "AmountValue": 0,
+              "Description": 1,
+              "TransferAccountId": 3
+            },
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Amount": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "AmountValue": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Description": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "rowsToFields",
+          "options": {}
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 16,
+        "x": 8,
+        "y": 13
+      },
+      "id": 15,
+      "options": {
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "groupWidth": 0.7,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "orientation": "auto",
+        "showValue": "auto",
+        "stacking": "none",
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "xTickLabelRotation": -90,
+        "xTickLabelSpacing": 0
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "title": "Income",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AccountBalance": true,
+              "AccountId": true,
+              "AccountName": true,
+              "AccountType": true,
+              "CashbackAmountValue": true,
+              "CashbackDescription": true,
+              "CategoryId": true,
+              "CategoryType": true,
+              "Description": false,
+              "ForeignAmountCode": true,
+              "ForeignAmountValue": true,
+              "HoldInfoAmountValue": true,
+              "HoldInfoForeignAmountCode": true,
+              "HoldInfoForeignAmountValue": true,
+              "IsCategorizable": true,
+              "Message": true,
+              "ParentCategoryId": true,
+              "ParentCategoryType": true,
+              "RawText": true,
+              "RoundUpAmountValue": true,
+              "RoundUpBoostPortionValue": true,
+              "SettledAt": true,
+              "Status": true,
+              "TransferAccountId": false,
+              "TransferAccountType": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "greater",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "AmountValue"
+              },
+              {
+                "config": {
+                  "id": "isNull",
+                  "options": {}
+                },
+                "fieldName": "TransferAccountId"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AmountValue": false,
+              "CreatedAt": false,
+              "CreatedAt / 1209600000": false,
+              "Description": true,
+              "TransferAccountId": true
+            },
+            "indexByName": {
+              "AmountValue": 2,
+              "CreatedAt": 1,
+              "CreatedAt / 1209600000": 0,
+              "Description": 3,
+              "TransferAccountId": 4
+            },
+            "renameByName": {
+              "CreatedAt / 1209600000": "Fortnight"
+            }
+          }
+        }
+      ],
+      "type": "barchart"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 25
+      },
+      "id": 9,
+      "panels": [],
+      "title": "Expenses",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 0,
+        "y": 26
+      },
+      "id": 16,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/.*/",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "title": "Expenses (by destination)",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AccountBalance": true,
+              "AccountId": true,
+              "AccountName": true,
+              "AccountType": true,
+              "CashbackAmountValue": true,
+              "CashbackDescription": true,
+              "CategoryId": true,
+              "CategoryType": true,
+              "CreatedAt": true,
+              "Description": false,
+              "ForeignAmountCode": true,
+              "ForeignAmountValue": true,
+              "HoldInfoAmountValue": true,
+              "HoldInfoForeignAmountCode": true,
+              "HoldInfoForeignAmountValue": true,
+              "IsCategorizable": true,
+              "Message": true,
+              "ParentCategoryId": true,
+              "ParentCategoryType": true,
+              "RawText": true,
+              "RoundUpAmountValue": true,
+              "RoundUpBoostPortionValue": true,
+              "SettledAt": true,
+              "Status": true,
+              "TransferAccountId": false,
+              "TransferAccountType": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "lower",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "AmountValue"
+              },
+              {
+                "config": {
+                  "id": "isNull",
+                  "options": {}
+                },
+                "fieldName": "TransferAccountId"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Amount",
+            "binary": {
+              "left": "AmountValue",
+              "operator": "*",
+              "reducer": "sum",
+              "right": "-1"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AmountValue": true,
+              "CreatedAt": false,
+              "TransferAccountId": true
+            },
+            "indexByName": {
+              "Amount": 2,
+              "AmountValue": 0,
+              "Description": 1,
+              "TransferAccountId": 3
+            },
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Amount": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "Description": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "rowsToFields",
+          "options": {}
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 8,
+        "y": 26
+      },
+      "id": 6,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/.*/",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "title": "Expenses (by category)",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AccountBalance": true,
+              "AccountId": true,
+              "AccountName": true,
+              "AccountType": true,
+              "AmountValue": false,
+              "CashbackAmountValue": true,
+              "CashbackDescription": true,
+              "CategoryId": false,
+              "CategoryType": true,
+              "CreatedAt": true,
+              "Description": true,
+              "ForeignAmountCode": true,
+              "ForeignAmountValue": true,
+              "HoldInfoAmountValue": true,
+              "HoldInfoForeignAmountCode": true,
+              "HoldInfoForeignAmountValue": true,
+              "IsCategorizable": true,
+              "Message": true,
+              "ParentCategoryId": true,
+              "ParentCategoryType": true,
+              "RawText": true,
+              "RoundUpAmountValue": true,
+              "RoundUpBoostPortionValue": true,
+              "SettledAt": true,
+              "Status": true,
+              "TransferAccountId": false,
+              "TransferAccountType": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "lower",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "AmountValue"
+              },
+              {
+                "config": {
+                  "id": "isNull",
+                  "options": {}
+                },
+                "fieldName": "TransferAccountId"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Amount",
+            "binary": {
+              "left": "AmountValue",
+              "operator": "*",
+              "reducer": "sum",
+              "right": "-1"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AmountValue": true,
+              "CreatedAt": false,
+              "Description": false,
+              "TransferAccountId": true
+            },
+            "indexByName": {
+              "Amount": 2,
+              "AmountValue": 0,
+              "Description": 1,
+              "TransferAccountId": 3
+            },
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Amount": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "CategoryId": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "CategoryType": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Description": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "rowsToFields",
+          "options": {}
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 8,
+        "x": 16,
+        "y": 26
+      },
+      "id": 7,
+      "options": {
+        "displayLabels": [],
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true,
+          "values": [
+            "value"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/.*/",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "title": "Expenses (by parent category)",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AccountBalance": true,
+              "AccountId": true,
+              "AccountName": true,
+              "AccountType": true,
+              "CashbackAmountValue": true,
+              "CashbackDescription": true,
+              "CategoryId": true,
+              "CategoryType": true,
+              "CreatedAt": true,
+              "Description": true,
+              "ForeignAmountCode": true,
+              "ForeignAmountValue": true,
+              "HoldInfoAmountValue": true,
+              "HoldInfoForeignAmountCode": true,
+              "HoldInfoForeignAmountValue": true,
+              "IsCategorizable": true,
+              "Message": true,
+              "ParentCategoryId": false,
+              "ParentCategoryType": true,
+              "RawText": true,
+              "RoundUpAmountValue": true,
+              "RoundUpBoostPortionValue": true,
+              "SettledAt": true,
+              "Status": true,
+              "TransferAccountId": false,
+              "TransferAccountType": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "lower",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "AmountValue"
+              },
+              {
+                "config": {
+                  "id": "isNull",
+                  "options": {}
+                },
+                "fieldName": "TransferAccountId"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Amount",
+            "binary": {
+              "left": "AmountValue",
+              "operator": "*",
+              "reducer": "sum",
+              "right": "-1"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AmountValue": true,
+              "CreatedAt": false,
+              "Description": false,
+              "TransferAccountId": true
+            },
+            "indexByName": {
+              "Amount": 2,
+              "AmountValue": 0,
+              "Description": 1,
+              "TransferAccountId": 3
+            },
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "groupBy",
+          "options": {
+            "fields": {
+              "Amount": {
+                "aggregations": [
+                  "sum"
+                ],
+                "operation": "aggregate"
+              },
+              "CategoryId": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "CategoryType": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "Description": {
+                "aggregations": [],
+                "operation": "groupby"
+              },
+              "ParentCategoryId": {
+                "aggregations": [],
+                "operation": "groupby"
+              }
+            }
+          }
+        },
+        {
+          "id": "rowsToFields",
+          "options": {}
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "-- Dashboard --"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "points",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 10,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 20,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "panelId": 2,
+          "refId": "A"
+        }
+      ],
+      "title": "Spending",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AccountBalance": true,
+              "AccountId": true,
+              "AccountName": true,
+              "AccountType": true,
+              "CashbackAmountValue": true,
+              "CashbackDescription": true,
+              "CategoryId": true,
+              "CategoryType": true,
+              "Description": false,
+              "ForeignAmountCode": true,
+              "ForeignAmountValue": true,
+              "HoldInfoAmountValue": true,
+              "HoldInfoForeignAmountCode": true,
+              "HoldInfoForeignAmountValue": true,
+              "IsCategorizable": true,
+              "Message": true,
+              "ParentCategoryId": true,
+              "ParentCategoryType": true,
+              "RawText": true,
+              "RoundUpAmountValue": true,
+              "RoundUpBoostPortionValue": true,
+              "SettledAt": true,
+              "Status": true,
+              "TransferAccountId": false,
+              "TransferAccountType": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [
+              {
+                "config": {
+                  "id": "lower",
+                  "options": {
+                    "value": 0
+                  }
+                },
+                "fieldName": "AmountValue"
+              },
+              {
+                "config": {
+                  "id": "isNull",
+                  "options": {}
+                },
+                "fieldName": "TransferAccountId"
+              }
+            ],
+            "match": "all",
+            "type": "include"
+          }
+        },
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "Amount",
+            "binary": {
+              "left": "AmountValue",
+              "operator": "*",
+              "reducer": "sum",
+              "right": "-1"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "AccountBalance": false,
+              "AccountName": false,
+              "AmountValue": true,
+              "TransferAccountId": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 58
+      },
+      "id": 11,
+      "panels": [],
+      "title": "Transactions",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "scriptsmith-up-datasource",
+        "uid": "${DS_UP_BANK}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 59
+      },
+      "id": 2,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "CreatedAt"
+          }
+        ]
+      },
+      "pluginVersion": "9.2.0",
+      "targets": [
+        {
+          "calculateBalance": true,
+          "datasource": {
+            "type": "scriptsmith-up-datasource",
+            "uid": "${DS_UP_BANK}"
+          },
+          "fakeData": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Transactions",
+      "transformations": [
+        {
+          "id": "filterByValue",
+          "options": {
+            "filters": [],
+            "match": "any",
+            "type": "include"
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Up",
+  "uid": "nr7BK34Vz",
+  "version": 18,
+  "weekStart": ""
+}
